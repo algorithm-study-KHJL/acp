@@ -1,4 +1,4 @@
-package com.khjl.acp.domain;
+package com.khjl.acp.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,28 +7,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
-public class Performance {
+public class Usher {
 
     @Id
     @GeneratedValue
     private Long id;
 
-    private LocalDateTime dateTime;
+    private String name;
 
-    private String type;
+    private Integer salary;
 
-    private String hall;
-
-    private String rating;
-
-    @OneToMany(mappedBy = "performance")
+    @OneToMany(mappedBy = "usher")
     private List<Schedule> scheduleList;
 
+    @OneToMany(mappedBy = "usher")
+    private List<Change> changeList;
 }
-
