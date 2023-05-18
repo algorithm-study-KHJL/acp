@@ -1,7 +1,6 @@
 package com.khjl.acp.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Usher {
 
@@ -27,4 +27,11 @@ public class Usher {
 
     @OneToMany(mappedBy = "usher")
     private List<Change> changeList;
+
+    @Builder
+    public Usher(Long id, String name, Integer salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
 }

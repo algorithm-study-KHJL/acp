@@ -1,6 +1,5 @@
 package com.khjl.acp.entity;
 
-import com.khjl.acp.entity.Schedule;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -32,14 +31,13 @@ public class Performance {
     private List<Schedule> scheduleList;
 
     @Builder
-    public Performance(Long id, LocalDateTime dateTime, String name, String type, String hall, String rating, List<Schedule> scheduleList) {
+    public Performance(Long id, LocalDateTime dateTime, String name, String type, String hall, String rating) {
         this.id = id;
         this.dateTime = dateTime;
         this.name = name;
         this.type = type;
         this.hall = hall;
         this.rating = rating;
-        this.scheduleList = scheduleList;
     }
 }
 
