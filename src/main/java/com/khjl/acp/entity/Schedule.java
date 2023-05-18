@@ -1,6 +1,5 @@
 package com.khjl.acp.entity;
 
-import com.khjl.acp.entity.performance.Performance;
 import lombok.Getter;
 import lombok.Setter;
 

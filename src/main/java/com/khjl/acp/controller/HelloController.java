@@ -1,7 +1,7 @@
 package com.khjl.acp.controller;
 
 import com.khjl.acp.domain.PerformanceParser;
-import com.khjl.acp.entity.performance.Performance;
+import com.khjl.acp.entity.Performance;
 import com.khjl.acp.entity.repository.PerformanceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

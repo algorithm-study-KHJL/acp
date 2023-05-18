@@ -1,4 +1,4 @@
-package com.khjl.acp.entity.performance;
+package com.khjl.acp.entity;
 
 import com.khjl.acp.entity.Schedule;
 import lombok.*;
@@ -23,17 +23,8 @@ public class Performance {
     private LocalDateTime dateTime;
 
     private String name;
-
-//    @Enumerated(EnumType.STRING)
-//    private PerformanceType type;
     private String type;
-
-//    @Enumerated(EnumType.STRING)
-//    private PerformanceType hall;
     private String hall;
-
-//    @Enumerated(EnumType.STRING)
-//    private PerformanceType rating;
     private String rating;
 
     @OneToMany(mappedBy = "performance")

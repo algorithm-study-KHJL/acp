@@ -1,6 +1,6 @@
 package com.khjl.acp.domain;
 
-import com.khjl.acp.entity.performance.Performance;
+import com.khjl.acp.entity.Performance;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
