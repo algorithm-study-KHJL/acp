@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 @Getter
-@Setter
+@ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Usher {
@@ -23,10 +23,20 @@ public class Usher {
     private Integer salary;
 
     @OneToMany(mappedBy = "usher")
+    @ToString.Exclude
     private List<Schedule> scheduleList;
 
     @OneToMany(mappedBy = "usher")
+    @ToString.Exclude
     private List<Change> changeList;
+
+    public void setChangeList(List<Change> changeList) {
+        this.changeList = changeList;
+    }
+
+    public void setScheduleList(List<Schedule> scheduleList) {
+        this.scheduleList = scheduleList;
+    }
 
     @Builder
     public Usher(Long id, String name, Integer salary) {

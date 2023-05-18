@@ -3,6 +3,7 @@
 /*eslint-disable*/
 
 var ScheduleList = [];
+console.log(ScheduleList);
 
 var SCHEDULE_CATEGORY = [
     'milestone',

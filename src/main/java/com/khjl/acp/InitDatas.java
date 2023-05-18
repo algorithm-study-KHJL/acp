@@ -1,6 +1,9 @@
 package com.khjl.acp;
 
+import com.khjl.acp.domain.PerformanceParser;
+import com.khjl.acp.entity.Performance;
 import com.khjl.acp.entity.Usher;
+import com.khjl.acp.entity.repository.PerformanceRepository;
 import com.khjl.acp.entity.repository.UsherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -11,12 +14,14 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Component
-public class InitUshers {
+public class InitDatas {
 
     private final UsherRepository usherRepository;
+    private final PerformanceRepository performanceRepository;
 
     @PostConstruct
-    public void initUshers() {
+    public void initDatas() {
+        // init Users
         List<String> usherNames = List.of(
                 "전채림", "유주희", "김서인", "정수아", "김태현",
                 "정지은", "김응준", "노지후", "이동현", "김기남", "양수경",
@@ -33,6 +38,12 @@ public class InitUshers {
                 .collect(Collectors.toList());
 
         usherRepository.saveAll(ushers);
+
+        // init performances
+        String url = "https://www.daejeon.go.kr/djac/performanceList.do?menuSeq=6709&yyyymm=202304&type=calendar&listCondition=&calendarCondition=";
+        List<Performance> performances = PerformanceParser.fromUrl(url, 2023, 4).getPerformances();
+
+        performanceRepository.saveAll(performances);
     }
 
 }
