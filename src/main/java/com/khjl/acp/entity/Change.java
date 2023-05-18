@@ -1,4 +1,4 @@
-package com.khjl.acp.domain;
+package com.khjl.acp.entity;
 
 import lombok.Getter;
 import lombok.Setter;

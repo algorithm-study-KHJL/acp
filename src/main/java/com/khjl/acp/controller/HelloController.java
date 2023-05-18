@@ -1,12 +1,13 @@
 package com.khjl.acp.controller;
 
-import com.khjl.acp.domain.Performance;
-import com.khjl.acp.repository.PerformanceRepository;
+import com.khjl.acp.domain.PerformanceParser;
+import com.khjl.acp.entity.Performance;
+import com.khjl.acp.entity.repository.PerformanceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -16,13 +17,11 @@ public class HelloController {
 
     @GetMapping("/performance_sample_data")
     public String performanceSampleData() {
-        Performance performance = new Performance();
-        performance.setType("대관공연");
-        performance.setHall("아트홀");
-        performance.setRating("3세이상");
-        performance.setDateTime(LocalDateTime.now());
+        String url = "https://www.daejeon.go.kr/djac/performanceList.do?menuSeq=6709&yyyymm=202305&type=calendar&listCondition=&calendarCondition=";
+        List<Performance> performances = PerformanceParser.fromUrl(url, 2023, 5).getPerformances();
 
-        performanceRepository.save(performance);
+        performanceRepository.saveAll(performances);
+
         return "ok";
     }
 }
